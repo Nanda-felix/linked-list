@@ -26,8 +26,6 @@ class Lista:
             novo_no.proximo = atual.proximo
             atual.proximo = novo_no
 
-        
-
     def tamanho(self):
         contador = 0
         atual = self.inicio
@@ -67,9 +65,9 @@ class Lista:
                 atual = atual.proximo
             print()  
 
-    def processar_arquivo(self, nome_arquivo):
+    def processar_arquivo(self, arquivo):
         try:
-            with open(nome_arquivo, 'r') as arquivo:
+            with open(arquivo, 'r') as arquivo:
                 
                 valores_iniciais = arquivo.readline().split()
                 for valor in valores_iniciais:
