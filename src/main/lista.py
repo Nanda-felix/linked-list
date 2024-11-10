@@ -1,4 +1,4 @@
-class Nodo:
+class no:
     def __init__(self, valor):
         self.valor = valor
         self.proximo = None
@@ -12,19 +12,19 @@ class Lista:
             print(f"Posição {posicao} inválida. Valor {valor} não foi adicionado.")
             return
 
-        novo_nodo = Nodo(valor)
+        novo_no = no(valor)
 
         if posicao == 0:  
-            novo_nodo.proximo = self.inicio
-            self.inicio = novo_nodo
+            novo_no.proximo = self.inicio
+            self.inicio = novo_no
         else:
             atual = self.inicio
             for _ in range(posicao - 1):
                 if atual.proximo is None:
                     break
                 atual = atual.proximo
-            novo_nodo.proximo = atual.proximo
-            atual.proximo = novo_nodo
+            novo_no.proximo = atual.proximo
+            atual.proximo = novo_no
 
         
 
@@ -70,12 +70,12 @@ class Lista:
     def processar_arquivo(self, nome_arquivo):
         try:
             with open(nome_arquivo, 'r') as arquivo:
-                # Inicialização da lista com valores iniciais
+                
                 valores_iniciais = arquivo.readline().split()
                 for valor in valores_iniciais:
-                    self.adicionar(int(valor), self.tamanho())  # Adiciona no final
+                    self.adicionar(int(valor), self.tamanho())  
 
-                # Número de ações
+                
                 numero_acoes = int(arquivo.readline())
 
                 for _ in range(numero_acoes):
@@ -99,11 +99,8 @@ class Lista:
 
                 
                         if len(acao) > 2:
-                            try:
                                 posicao = int(acao[2])
-                            except ValueError:
-                                print(f"Posição inválida fornecida, ação ignorada: {linha}")
-                                continue
+            
 
                     if tipo_acao == "A":
                         self.adicionar(valor, posicao)
