@@ -92,10 +92,10 @@ class Lista {
         try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             String[] valoresIniciais = br.readLine().split(" ");
             for (String valor : valoresIniciais) {
-                adicionar(Integer.parseInt(valor), tamanho());
+                adicionar(Integer.parseInt(valor.trim()), tamanho());
             }
 
-            int numeroAcoes = Integer.parseInt(br.readLine());
+            int numeroAcoes = Integer.parseInt(br.readLine().trim());
 
             for (int i = 0; i < numeroAcoes; i++) {
                 String linha = br.readLine();
@@ -103,8 +103,15 @@ class Lista {
 
                 String[] acao = linha.split(" ");
                 String tipoAcao = acao[0];
-                int valor = acao.length > 1 ? Integer.parseInt(acao[1]) : 0;
-                int posicao = acao.length > 2 ? Integer.parseInt(acao[2]) : 0;
+                int valor = 0;
+                int posicao = 0;
+
+                if (acao.length > 1) {
+                    valor = Integer.parseInt(acao[1].trim());
+                }
+                if (acao.length > 2) {
+                    posicao = Integer.parseInt(acao[2].trim());
+                }
 
                 switch (tipoAcao) {
                     case "A":
@@ -131,6 +138,6 @@ class Lista {
 
     public static void main(String[] args) {
         Lista gerenciador = new Lista();
-        gerenciador.processarArquivo("C:\\Users\\adria\\Desktop\\Nanda\\arq.txt");
+        gerenciador.processarArquivo("C:\\Users\\adria\\Desktop\\Nanda\\arqg.txt");
     }
 }
